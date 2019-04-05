@@ -1,0 +1,308 @@
+new 1100,1100 
+string 20,20 {2016: Your Name, method, etc. Score: xxxx.yyyyy } :tekst
+coordsys west south right up
+origin 50,50
+fcircle 643,766 3 :p1
+fcircle 616,531 3 :p2
+fcircle 91,329 3 :p3
+fcircle 494,700 3 :p4
+fcircle 12,983 3 :p5
+fcircle 394,911 3 :p6
+fcircle 356,659 3 :p7
+fcircle 790,450 3 :p8
+fcircle 473,587 3 :p9
+fcircle 600,297 3 :p10
+fcircle 376,109 3 :p11
+fcircle 317,577 3 :p12
+fcircle 967,107 3 :p13
+fcircle 744,415 3 :p14
+fcircle 167,429 3 :p15
+fcircle 284,756 3 :p16
+fcircle 25,563 3 :p17
+fcircle 213,975 3 :p18
+fcircle 164,18 3 :p19
+fcircle 667,834 3 :p20
+fcircle 848,331 3 :p21
+fcircle 506,245 3 :p22
+fcircle 746,760 3 :p23
+fcircle 25,99 3 :p24
+fcircle 985,607 3 :p25
+fcircle 681,294 3 :p26
+fcircle 434,142 3 :p27
+fcircle 949,796 3 :p28
+fcircle 708,445 3 :p29
+fcircle 796,840 3 :p30
+fcircle 969,400 3 :p31
+fcircle 577,911 3 :p32
+fcircle 171,74 3 :p33
+fcircle 766,376 3 :p34
+fcircle 620,677 3 :p35
+fcircle 498,136 3 :p36
+fcircle 901,204 3 :p37
+fcircle 385,451 3 :p38
+fcircle 58,215 3 :p39
+fcircle 391,800 3 :p40
+fcircle 988,349 3 :p41
+fcircle 226,802 3 :p42
+fcircle 29,415 3 :p43
+fcircle 880,445 3 :p44
+fcircle 565,744 3 :p45
+fcircle 739,305 3 :p46
+fcircle 906,186 3 :p47
+fcircle 442,719 3 :p48
+fcircle 843,336 3 :p49
+fcircle 165,558 3 :p50
+fcircle 904,399 3 :p51
+fcircle 664,182 3 :p52
+fcircle 999,425 3 :p53
+fcircle 795,292 3 :p54
+fcircle 366,396 3 :p55
+fcircle 804,669 3 :p56
+fcircle 676,990 3 :p57
+fcircle 732,682 3 :p58
+fcircle 97,459 3 :p59
+fcircle 392,881 3 :p60
+fcircle 721,413 3 :p61
+fcircle 512,86 3 :p62
+fcircle 117,857 3 :p63
+fcircle 543,936 3 :p64
+fcircle 58,320 3 :p65
+fcircle 879,673 3 :p66
+fcircle 600,596 3 :p67
+fcircle 807,739 3 :p68
+fcircle 266,513 3 :p69
+fcircle 566,926 3 :p70
+fcircle 982,265 3 :p71
+fcircle 581,128 3 :p72
+fcircle 516,510 3 :p73
+fcircle 124,996 3 :p74
+fcircle 419,453 3 :p75
+fcircle 582,969 3 :p76
+fcircle 19,59 3 :p77
+fcircle 746,474 3 :p78
+fcircle 799,43 3 :p79
+fcircle 424,502 3 :p80
+fcircle 13,77 3 :p81
+fcircle 539,214 3 :p82
+fcircle 538,325 3 :p83
+fcircle 78,545 3 :p84
+fcircle 639,878 3 :p85
+fcircle 891,446 3 :p86
+fcircle 217,262 3 :p87
+fcircle 896,345 3 :p88
+fcircle 758,217 3 :p89
+fcircle 416,609 3 :p90
+fcircle 949,453 3 :p91
+fcircle 903,218 3 :p92
+fcircle 865,626 3 :p93
+fcircle 460,967 3 :p94
+fcircle 22,288 3 :p95
+fcircle 277,406 3 :p96
+fcircle 785,764 3 :p97
+fcircle 310,317 3 :p98
+fcircle 990,553 3 :p99
+fcircle 289,931 3 :p100
+# insert here your solution instead of 1 2 3 ... 
+line (p1) (p2)
+line (p2) (p3)
+line (p3) (p4)
+line (p4) (p5)
+line (p5) (p6)
+line (p6) (p7)
+line (p7) (p8)
+line (p8) (p9)
+line (p9) (p10)
+line (p10) (p11)
+line (p11) (p12)
+line (p12) (p13)
+line (p13) (p14)
+line (p14) (p15)
+line (p15) (p16)
+line (p16) (p17)
+line (p17) (p18)
+line (p18) (p19)
+line (p19) (p20)
+line (p20) (p21)
+line (p21) (p22)
+line (p22) (p23)
+line (p23) (p24)
+line (p24) (p25)
+line (p25) (p26)
+line (p26) (p27)
+line (p27) (p28)
+line (p28) (p29)
+line (p29) (p30)
+line (p30) (p31)
+line (p31) (p32)
+line (p32) (p33)
+line (p33) (p34)
+line (p34) (p35)
+line (p35) (p36)
+line (p36) (p37)
+line (p37) (p38)
+line (p38) (p39)
+line (p39) (p40)
+line (p40) (p41)
+line (p41) (p42)
+line (p42) (p43)
+line (p43) (p44)
+line (p44) (p45)
+line (p45) (p46)
+line (p46) (p47)
+line (p47) (p48)
+line (p48) (p49)
+line (p49) (p50)
+line (p50) (p51)
+line (p51) (p52)
+line (p52) (p53)
+line (p53) (p54)
+line (p54) (p55)
+line (p55) (p56)
+line (p56) (p57)
+line (p57) (p58)
+line (p58) (p59)
+line (p59) (p60)
+line (p60) (p61)
+line (p61) (p62)
+line (p62) (p63)
+line (p63) (p64)
+line (p64) (p65)
+line (p65) (p66)
+line (p66) (p67)
+line (p67) (p68)
+line (p68) (p69)
+line (p69) (p70)
+line (p70) (p71)
+line (p71) (p72)
+line (p72) (p73)
+line (p73) (p74)
+line (p74) (p75)
+line (p75) (p76)
+line (p76) (p77)
+line (p77) (p78)
+line (p78) (p79)
+line (p79) (p80)
+line (p80) (p81)
+line (p81) (p82)
+line (p82) (p83)
+line (p83) (p84)
+line (p84) (p85)
+line (p85) (p86)
+line (p86) (p87)
+line (p87) (p88)
+line (p88) (p89)
+line (p89) (p90)
+line (p90) (p91)
+line (p91) (p92)
+line (p92) (p93)
+line (p93) (p94)
+line (p94) (p95)
+line (p95) (p96)
+line (p96) (p97)
+line (p97) (p98)
+line (p98) (p99)
+line (p99) (p100)
+line (p100) (p1)
+
+
+
+line (p1) (p5)
+line (p5) (p81)
+line (p81) (p77)
+line (p77) (p95)
+line (p95) (p24)
+line (p24) (p17)
+line (p17) (p43)
+line (p43) (p39)
+line (p39) (p65)
+line (p65) (p84)
+line (p84) (p3)
+line (p3) (p59)
+line (p59) (p63)
+line (p63) (p74)
+line (p74) (p19)
+line (p19) (p50)
+line (p50) (p15)
+line (p15) (p33)
+line (p33) (p18)
+line (p18) (p87)
+line (p87) (p42)
+line (p42) (p69)
+line (p69) (p96)
+line (p96) (p16)
+line (p16) (p100)
+line (p100) (p98)
+line (p98) (p12)
+line (p12) (p7)
+line (p7) (p55)
+line (p55) (p11)
+line (p11) (p38)
+line (p38) (p40)
+line (p40) (p60)
+line (p60) (p6)
+line (p6) (p90)
+line (p90) (p75)
+line (p75) (p80)
+line (p80) (p27)
+line (p27) (p48)
+line (p48) (p94)
+line (p94) (p9)
+line (p9) (p4)
+line (p4) (p36)
+line (p36) (p22)
+line (p22) (p62)
+line (p62) (p73)
+line (p73) (p83)
+line (p83) (p82)
+line (p82) (p64)
+line (p64) (p45)
+line (p45) (p70)
+line (p70) (p32)
+line (p32) (p72)
+line (p72) (p76)
+line (p76) (p10)
+line (p10) (p67)
+line (p67) (p2)
+line (p2) (p35)
+line (p35) (p85)
+line (p85) (p52)
+line (p52) (p20)
+line (p20) (p57)
+line (p57) (p26)
+line (p26) (p29)
+line (p29) (p61)
+line (p61) (p58)
+line (p58) (p46)
+line (p46) (p14)
+line (p14) (p78)
+line (p78) (p23)
+line (p23) (p89)
+line (p89) (p34)
+line (p34) (p97)
+line (p97) (p8)
+line (p8) (p54)
+line (p54) (p30)
+line (p30) (p79)
+line (p79) (p56)
+line (p56) (p68)
+line (p68) (p49)
+line (p49) (p21)
+line (p21) (p93)
+line (p93) (p66)
+line (p66) (p44)
+line (p44) (p86)
+line (p86) (p88)
+line (p88) (p37)
+line (p37) (p92)
+line (p92) (p51)
+line (p51) (p47)
+line (p47) (p91)
+line (p91) (p28)
+line (p28) (p13)
+line (p13) (p31)
+line (p31) (p71)
+line (p71) (p25)
+line (p25) (p41)
+line (p41) (p99)
+line (p99) (p53)
+line (p53) (p1)

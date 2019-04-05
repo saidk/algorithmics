@@ -1,0 +1,63 @@
+new 920,920
+coordsys west south right up
+
+defObject node
+ellipse 20,20 20 20 :r
+string center center 20,20 {%this}
+endObject"
+
+
+object 150,650 node :A
+object 200,770 node :B
+object 350,760 node :C
+object 500,750 node :D
+object 370,680 node :E
+object 300,550 node :F
+object 420,650 node :G
+object 350,550 node :H
+object 520,600 node :I
+object 420,550 node :J
+object 300,680 node :K
+setColor gray
+
+connect A.r B.r
+connect A.r E.r
+connect A.r F.r
+connect A.r K.r
+connect C.r B.r
+connect C.r E.r
+connect C.r G.r
+connect C.r I.r
+connect C.r J.r
+connect C.r K.r
+connect D.r B.r
+connect D.r C.r
+connect D.r E.r
+connect D.r G.r
+connect D.r I.r
+connect D.r J.r
+connect D.r K.r
+connect E.r E.r
+connect E.r K.r
+connect F.r E.r
+connect F.r K.r
+connect G.r E.r
+connect G.r G.r
+connect G.r I.r
+connect G.r J.r
+connect G.r K.r
+connect H.r E.r
+connect H.r F.r
+connect H.r K.r
+connect I.r E.r
+connect I.r G.r
+connect I.r I.r
+connect I.r J.r
+connect I.r K.r
+connect J.r E.r
+connect J.r G.r
+connect J.r I.r
+connect J.r J.r
+connect J.r K.r
+connect K.r E.r
+connect K.r K.r

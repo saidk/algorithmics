@@ -1,0 +1,788 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{HW4\_B87772}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    EX1: In this exercise I implemented Bucket sort algorithm. It is a
+distribution sort that works by arranging elements into several
+`buckets' which are then sorted using another sort(I used insertion
+sort) and merged into a sorted list. To compare bucket sort algorithm I
+chose the python's built-in algorithm Timsort.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{random}\PY{o}{,} \PY{n+nn}{sys}\PY{o}{,} \PY{n+nn}{time}\PY{o}{,} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}\PY{o}{,} \PY{n+nn}{math}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plott}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{bucketSort}\PY{p}{(}\PY{n}{arr}\PY{p}{)}\PY{p}{:}
+            \PY{n}{largest} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{n}{arr}\PY{p}{)}
+            \PY{n}{length} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{arr}\PY{p}{)}
+            \PY{n}{size} \PY{o}{=} \PY{n}{largest}\PY{o}{/}\PY{n}{length}
+         
+            \PY{n}{buckets} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{p}{]} \PY{k}{for} \PY{n}{\PYZus{}} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{length}\PY{p}{)}\PY{p}{]}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{length}\PY{p}{)}\PY{p}{:}
+                \PY{n}{j} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n}{arr}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{o}{/}\PY{n}{size}\PY{p}{)}
+                \PY{k}{if} \PY{n}{j} \PY{o}{!=} \PY{n}{length}\PY{p}{:}
+                    \PY{n}{buckets}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{arr}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+                \PY{k}{else}\PY{p}{:}
+                    \PY{n}{buckets}\PY{p}{[}\PY{n}{length} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{arr}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+         
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{length}\PY{p}{)}\PY{p}{:}
+                \PY{n}{insertion\PYZus{}sort}\PY{p}{(}\PY{n}{buckets}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+         
+            \PY{n}{result} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{length}\PY{p}{)}\PY{p}{:}
+                \PY{n}{result} \PY{o}{=} \PY{n}{result} \PY{o}{+} \PY{n}{buckets}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+        \PY{c+c1}{\PYZsh{}     print(result)}
+            \PY{k}{return} \PY{n}{result}
+         
+        \PY{k}{def} \PY{n+nf}{insertion\PYZus{}sort}\PY{p}{(}\PY{n}{arr}\PY{p}{)}\PY{p}{:}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{arr}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                \PY{n}{temp} \PY{o}{=} \PY{n}{arr}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                \PY{n}{j} \PY{o}{=} \PY{n}{i} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+                \PY{k}{while} \PY{p}{(}\PY{n}{j} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{0} \PY{o+ow}{and} \PY{n}{temp} \PY{o}{\PYZlt{}} \PY{n}{arr}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+                    \PY{n}{arr}\PY{p}{[}\PY{n}{j} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{n}{arr}\PY{p}{[}\PY{n}{j}\PY{p}{]}
+                    \PY{n}{j} \PY{o}{=} \PY{n}{j} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+                \PY{n}{arr}\PY{p}{[}\PY{n}{j} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{n}{temp}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{measure\PYZus{}time}\PY{p}{(}\PY{n}{arr}\PY{p}{)}\PY{p}{:}
+            \PY{n}{startTime} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+            \PY{n}{bucketSort}\PY{p}{(}\PY{n}{arr}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+            
+            \PY{n}{duration} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{startTime}
+            \PY{k}{return} \PY{n}{duration}
+        \PY{k}{def} \PY{n+nf}{measure\PYZus{}time\PYZus{}tim}\PY{p}{(}\PY{n}{arr}\PY{p}{)}\PY{p}{:}
+            \PY{n}{arr1} \PY{o}{=} \PY{n}{arr}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+            \PY{n}{startTime} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+            \PY{n}{arr1}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{p}{)}
+            \PY{n}{duration} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{startTime}
+        \PY{c+c1}{\PYZsh{}     print(arr1)}
+            \PY{k}{return} \PY{n}{duration}
+        \PY{k}{def} \PY{n+nf}{increase}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n}{measures\PYZus{}arr\PYZus{}int64} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{n}{measures\PYZus{}arr\PYZus{}int32} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{n}{measures\PYZus{}arr\PYZus{}int8} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{n}{measures\PYZus{}arr\PYZus{}int64\PYZus{}tim} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{n}{measures\PYZus{}arr\PYZus{}int32\PYZus{}tim} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{n}{measures\PYZus{}arr\PYZus{}int8\PYZus{}tim} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{n}{f\PYZus{}x} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{)}\PY{p}{:}   
+                \PY{n}{arr\PYZus{}int64} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{100}\PY{p}{,}\PY{n}{i}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{int64}\PY{p}{)}\PY{p}{)}
+                \PY{n}{arr\PYZus{}int32} \PY{o}{=} \PY{n}{arr\PYZus{}int64}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{int32}\PY{p}{)}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}
+                \PY{n}{arr\PYZus{}int8} \PY{o}{=} \PY{n}{arr\PYZus{}int64}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{int8}\PY{p}{)}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}
+                \PY{n}{arr\PYZus{}int64} \PY{o}{=} \PY{n}{arr\PYZus{}int64}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}
+                \PY{c+c1}{\PYZsh{}int64 }
+                \PY{n}{duration} \PY{o}{=} \PY{n}{measure\PYZus{}time}\PY{p}{(}\PY{n}{arr\PYZus{}int64}\PY{p}{)}
+                \PY{n}{measures\PYZus{}arr\PYZus{}int64}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{duration}\PY{p}{)}
+                
+                \PY{n}{duration} \PY{o}{=} \PY{n}{measure\PYZus{}time\PYZus{}tim}\PY{p}{(}\PY{n}{arr\PYZus{}int64}\PY{p}{)}
+                \PY{n}{measures\PYZus{}arr\PYZus{}int64\PYZus{}tim}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{duration}\PY{p}{)}
+                \PY{c+c1}{\PYZsh{}int32 }
+                \PY{n}{duration} \PY{o}{=} \PY{n}{measure\PYZus{}time}\PY{p}{(}\PY{n}{arr\PYZus{}int32}\PY{p}{)}
+                \PY{n}{measures\PYZus{}arr\PYZus{}int32}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{duration}\PY{p}{)}
+                
+                \PY{n}{duration} \PY{o}{=} \PY{n}{measure\PYZus{}time\PYZus{}tim}\PY{p}{(}\PY{n}{arr\PYZus{}int32}\PY{p}{)}
+                \PY{n}{measures\PYZus{}arr\PYZus{}int32\PYZus{}tim}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{duration}\PY{p}{)}
+                \PY{c+c1}{\PYZsh{}int8}
+                \PY{n}{duration} \PY{o}{=} \PY{n}{measure\PYZus{}time}\PY{p}{(}\PY{n}{arr\PYZus{}int8}\PY{p}{)}
+                \PY{n}{measures\PYZus{}arr\PYZus{}int8}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{duration}\PY{p}{)}
+                
+                \PY{n}{duration} \PY{o}{=} \PY{n}{measure\PYZus{}time\PYZus{}tim}\PY{p}{(}\PY{n}{arr\PYZus{}int8}\PY{p}{)}
+                \PY{n}{measures\PYZus{}arr\PYZus{}int8\PYZus{}tim}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{duration}\PY{p}{)}
+        
+            
+            
+            \PY{n}{plott}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Analysis of time variation between int64,int32,int8 and built\PYZhy{}in sort algorithm}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{plott}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Seconds}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{plott}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Number of integers}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            
+            \PY{n}{plott}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{measures\PYZus{}arr\PYZus{}int64}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{int64}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{plott}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{measures\PYZus{}arr\PYZus{}int32}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{int32}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{plott}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{measures\PYZus{}arr\PYZus{}int8}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{int8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{plott}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{measures\PYZus{}arr\PYZus{}int64\PYZus{}tim}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{int64\PYZus{}tim}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{plott}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{measures\PYZus{}arr\PYZus{}int32\PYZus{}tim}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{int32\PYZus{}tim}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{plott}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{measures\PYZus{}arr\PYZus{}int8\PYZus{}tim}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{int8\PYZus{}tim}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            
+            \PY{n}{plott}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+            \PY{n}{plott}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+        
+        \PY{n}{increase}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_3_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    We can observe from the graph that with increasing the number of
+integers in array, bucket sort starts to sort slower than the built-in
+sorting algorithm - Timsort and this tendency can be observed with all
+types of integers(int64,int32,int8). Generally it is slower 200-300
+times with big-sized arrays. I came to this conclusion by dividing
+duration of bucket sort algorithm in each occassion to 200 and 300 and
+somewhere between this numbers the graphs are similar. On the other hand
+among the int types the most slow one is int64. The second one is int32
+and the fastest sorting int type is int8. After this experiment we can
+make a conclusion that integers with smallest number of bytes are faster
+than integers with big amount of bytes.
+
+    EX2: To visualize the skip-list insertion I chose the simple software
+visualization tool - Paint. In the first step I created the first level
+of skip list with the smallest element of minus infinity(-∞) and then
+put the first number(1) into the list.
+
+    
+
+    As the structure of skip list is randomized in this task we were obliged
+to use coin to simulate the randomization. I chose the simple 20 cent
+coin for it, where heads meant to move to upper level, and tails - to
+stop. So first flipping ended up with heads, I moved to the upper level,
+actually created it and flipped the coin for the second time and got the
+heads, so I stopped.
+
+    
+
+    The actual process of insertion when it is processed in machine or
+computer goes from upper level and searches by going everytime to the
+bottom level, for example if we have to insert 5, we should search its
+place from the top level by comparing it with values on each level,for
+example, when 5 is less than the next value on the current level we move
+to the bottom level, compare 5 to the values here and find its place
+among the values. As I described the actual process of insertion,in the
+next steps I will just insert the number to the bottom level without
+giving the description of a whole process.
+
+    
+
+    I've inserted 5 and coin showed the tails two time and the flipped to
+the heads, so now we have 3 levels with value 5 in each of them.
+
+    
+
+    On the next step I inserted 7 to our list and by flipping the coin I've
+got heads from the very first try, so I stopped on the bottom level. How
+many steps it took for us to insert 7? Firstly on the 3rd level we
+compared our value with 5, and 7 was bigger than it. As 5 was the
+biggest number in our list we come to the level1 and insert it right
+after 5. Totally we have 4 steps with insertion itself.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture4.PNG}
+\caption{Capture4.PNG}
+\end{figure}
+
+    The fourth value had the same actions as 5, so now we have 5 and 30 on
+the third level.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture5.PNG}
+\caption{Capture5.PNG}
+\end{figure}
+
+    As I described the process of insertion we are searching the place of
+new element from the top level and for value 2 we found its place right
+after 1, then coin showed the tails 3 times and then heads and we
+stopped by creating the level 4 as I showed in the picture.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture6.PNG}
+\caption{Capture6.PNG}
+\end{figure}
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture7.PNG}
+\caption{Capture7.PNG}
+\end{figure}
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture8.PNG}
+\caption{Capture8.PNG}
+\end{figure}
+
+    After insertion of 4,18,32,34 the the coin showed heads and now we have
+these values only on the bottom level.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture9.PNG}
+\caption{Capture9.PNG}
+\end{figure}
+
+    Insertion of 36 and coin reacts was the same as with 2, so now on the
+4th level we have minus infinity,2 and 36.
+
+    To find a vale we start as with insertion from top level. 35 is more
+than 2, but less than 36, so we go down to the 3rd level. Here we
+compare it with 5 and 30 and in both occasions 35 is more than these
+values, but again less than 36, so we are moving to the second level.
+Here again the next value is 36 and we repeat our moving down and now we
+are on the bottom level. 35 is more than 32 and 34, but the next value
+is again 36. As we are on the bottom level it means that we couldn't
+manage to find our wished value. We performed 9 comparisons before
+figuring out that we don't have 35 in our skip list.
+
+    EX3: In this exercise we should insert the same values into binary
+search tree in the same manner. To visualise it I used the same
+software. The first 4 steps are skewed to the right. 1 is root.
+5\textgreater{}1,7\textgreater{}5 and 30\textgreater{}7.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_BST_step1.PNG}
+\caption{Capture\_BST\_step1.PNG}
+\end{figure}
+
+    Then we should add '2' to the tree and now we start to compare. 2 is
+bigger than 1, so we go to the right and less than 5, so we go to the
+left.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_BST_step2.PNG}
+\caption{Capture\_BST\_step2.PNG}
+\end{figure}
+
+    Then we should insert 4 and 18. 4 is bigger than 1, less than 5 and
+bigger than 2, so we build a new branch to the right of 2. 18 is bigger
+than 1,5,7 but less than 30, so we build a new branch for 18 to the left
+of 30.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_BST_step3.PNG}
+\caption{Capture\_BST\_step3.PNG}
+\end{figure}
+
+    The last numbers are all bigger than what we had in a tree and among
+each other the next one is bigger than previous one, so we end up with
+tree like that.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_BST.PNG}
+\caption{Capture\_BST.PNG}
+\end{figure}
+
+    As we can observe from the picture of out final tree, it is not complete
+BST and it is skewed to the right, but also cannot be considered as the
+right skewed binary tree because some of the nodes has 2 children.
+
+    EX4: The general definition of AVL tree: it is a self-balancing Binary
+Search Tree where the difference between heights of left and right
+subtrees cannot be more than one for all nodes. So it means that when
+the height of 2 children differs more than 1, then the tree should be
+balanced. So, firstly when we insert the elements to the tree we have
+this structure.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_AVL_step1.PNG}
+\caption{Capture\_AVL\_step1.PNG}
+\end{figure}
+
+    It contradicts to the defintion of AVL tree, because on the right we
+already have 2 child nodes and none on the leftm so we re-balance the
+tree.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_AVL_step2.PNG}
+\caption{Capture\_AVL\_step2.PNG}
+\end{figure}
+
+    Then we add 3 more numbers and our tree again becomes disbalanced. We
+change the position of 2 and 1.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_AVL_step3.PNG}
+\caption{Capture\_AVL\_step3.PNG}
+\end{figure}
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_AVL_step4.PNG}
+\caption{Capture\_AVL\_step4.PNG}
+\end{figure}
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_AVL_step5.PNG}
+\caption{Capture\_AVL\_step5.PNG}
+\end{figure}
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_AVL_step6.PNG}
+\caption{Capture\_AVL\_step6.PNG}
+\end{figure}
+
+    Now our tree disbalanced again because height of 2 and 7 differs with
+more than 1 branch(2). So we change the position of 7 and move it to the
+top. Actually the left side after this movement also became disbalanced,
+so 4 moved to the top and left branch is become balanced.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_AVL_step7.PNG}
+\caption{Capture\_AVL\_step7.PNG}
+\end{figure}
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_AVL_step8.PNG}
+\caption{Capture\_AVL\_step8.PNG}
+\end{figure}
+
+    After inserting 36 we should again balance our tree, as 32 has two more
+children than 18. So we move 32 to 30th place and below it is the BST
+with AVL-balancing.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:Capture_AVL_step9.PNG}
+\caption{Capture\_AVL\_step9.PNG}
+\end{figure}
+
+    To search 35 in this tree we perform 4 comparisons and figure out that
+actually we don't have 35 in our tree(35\textgreater{}7,32,34 but less
+than 36).
+
+    EX5: Red black BST has the several properties or rules that should be
+obeyed: 1.Tree is a valid binary search tree 2.All nodes are either red
+or black 3.The root is black 4.All leaves are black 5.Every red node has
+two black children 6.Every path from root to leaf contain the same
+number of black nodes
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black1.PNG}
+\caption{red\_black1.PNG}
+\end{figure}
+
+    This is what we have after first insertion and as all requirements are
+fulfilled we can move to the second step.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black2.PNG}
+\caption{red\_black2.PNG}
+\end{figure}
+
+    We have inserted 5 and it is red because "Every path from root to leaf
+contain the same number of black nodes".
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black3.PNG}
+\caption{red\_black3.PNG}
+\end{figure}
+
+    By inserting 7 now we have a conflict and we should rotate the tree,
+move 5 to the top and change its color with 1. This is right right case.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black4.PNG}
+\caption{red\_black4.PNG}
+\end{figure}
+
+    After insertion of 30 we have new kind of conflict. Every red node
+should have two black children, but 7 does not. So we change the color
+of 7 and 1. 1. 30's uncle is RED 2. Change color of 1 and 7 as BLACK. 3.
+Change color of grand parent as RED. 4. Change 30 = 30's grandparent.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black5.PNG}
+\caption{red\_black5.PNG}
+\end{figure}
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black6.PNG}
+\caption{red\_black6.PNG}
+\end{figure}
+
+    Inserting 2 happenned without a conflict.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black7.PNG}
+\caption{red\_black7.PNG}
+\end{figure}
+
+    Now we insert 4.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black8.PNG}
+\caption{red\_black8.PNG}
+\end{figure}
+
+    and again we have "Every red node has two black children" conflict", so
+we move 2 to the upper level, change its and 1's color. Left Right Case.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black9.PNG}
+\caption{red\_black9.PNG}
+\end{figure}
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black10.PNG}
+\caption{red\_black10.PNG}
+\end{figure}
+
+    By inserting 18 we have the red node which has only one black node, so
+again we should rotate. Right right case.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black11.PNG}
+\caption{red\_black11.PNG}
+\end{figure}
+
+    now 18 is red and on the second level.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black12.PNG}
+\caption{red\_black12.PNG}
+\end{figure}
+
+    With inserting 32 we don't have any trouble.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black14.PNG}
+\caption{red\_black14.PNG}
+\end{figure}
+
+    With inserting 34, 32 has only one black child node. Right right case.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black13.PNG}
+\caption{red\_black13.PNG}
+\end{figure}
+
+    We rotate 32 and 30 and change theirs color.
+
+    The final step was inserting 36 and it totally messed up the structure
+that I was trying to apply.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black15.PNG}
+\caption{red\_black15.PNG}
+\end{figure}
+
+    Here 34 had only one black node, but as the structure of tree becomes
+skewed to the rightm I decided to change the top node and make it 18.
+
+    \begin{figure}
+\centering
+\includegraphics{attachment:red_black16.PNG}
+\caption{red\_black16.PNG}
+\end{figure}
+
+    Changed 18's color to black and remain only 1,4 and 36 red. This tree
+obey to all 6 rules that are prescripted to black-red trees. I rotated
+the tree after 6 insertions.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
